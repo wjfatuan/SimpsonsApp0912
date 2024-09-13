@@ -27,6 +27,7 @@ class MainActivity : AppCompatActivity() {
             Log.d("LISTMSG","index: $index ")
             Log.d("LISTMSG","vid: $vid ")
             val goToIntent = Intent(this, CharacterActivity::class.java)
+            goToIntent.putExtra("CHARACTERINDEX", index)
             startActivity(goToIntent)
         }
     }
