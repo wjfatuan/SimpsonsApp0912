@@ -2,6 +2,7 @@ package com.example.simpsonsapp0912
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -19,8 +20,12 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        binding.changeScreen.setOnClickListener {
-            // abrir otra actividad
+
+        binding.charactersList.setOnItemClickListener { listView, view, index, vid ->
+            Log.d("LISTMSG","listview: $listView ")
+            Log.d("LISTMSG","view: $view ")
+            Log.d("LISTMSG","index: $index ")
+            Log.d("LISTMSG","vid: $vid ")
             val goToIntent = Intent(this, CharacterActivity::class.java)
             startActivity(goToIntent)
         }

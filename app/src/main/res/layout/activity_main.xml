@@ -17,11 +17,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/changeScreen"
-        android:layout_width="wrap_content"
+
+    <ListView
+        android:id="@+id/charactersList"
+        android:entries="@array/character_names"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Ir a detalle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
