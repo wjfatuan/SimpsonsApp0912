@@ -36,6 +36,8 @@ class MainActivity : AppCompatActivity() {
             val goToIntent = Intent(this, CharacterActivity::class.java)
             goToIntent.putExtra("CHARACTERINDEX", index)
             goToIntent.putExtra("CHARACTERNAME", simpsonsCharacters[index])
+            simpsonsCharacters.add("Maggie")
+            myAdapter.notifyDataSetChanged()
             startActivity(goToIntent)
         }
     }

@@ -22,12 +22,7 @@ class CharacterActivity : AppCompatActivity() {
         val index = intent.getIntExtra("CHARACTERINDEX", -1)
         val name = intent.getStringExtra("CHARACTERNAME")
         binding.characterName.text = name
-        if(index==0) {
-            binding.characterImage.setImageResource(R.drawable.bart)
-        }
-        if(index==1) {
-            binding.characterImage.setImageResource(R.drawable.lisa)
-        }
-
+        val id = resources.getIdentifier(name?.lowercase(), "drawable", packageName)
+        binding.characterImage.setImageResource(id)
     }
 }
