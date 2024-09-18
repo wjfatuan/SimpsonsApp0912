@@ -26,6 +26,15 @@
         android:src="@drawable/bart"
         app:layout_constraintTop_toBottomOf="@id/characterName"/>
 
+    <Button
+        android:id="@+id/btnDoSomething"
+        android:text="Wikipedia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/characterImage" />
+
     <TextView
         android:id="@+id/characterDescription"
         android:layout_width="wrap_content"
@@ -33,5 +42,5 @@
         android:text="Lorem Ipsum Dolor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/characterImage" />
+        app:layout_constraintTop_toBottomOf="@+id/btnDoSomething" />
 </androidx.constraintlayout.widget.ConstraintLayout>
