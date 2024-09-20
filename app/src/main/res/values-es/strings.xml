@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">App de los Simpson</string>
+    <string-array name="character_names">
+        <item>Bartolomeo</item>
+        <item>Homero</item>
+    </string-array>
+</resources>

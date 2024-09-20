@@ -40,5 +40,36 @@ class MainActivity : AppCompatActivity() {
             myAdapter.notifyDataSetChanged()
             startActivity(goToIntent)
         }
+        Log.d("LIFECYCLE", "onCreate")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d("LIFECYCLE", "on destroy")
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Log.d("LIFECYCLE", "on start")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.d("LIFECYCLE", "on stop")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.d("LIFECYCLE", "on pause")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.d("LIFECYCLE", "on resume")
     }
 }
+
+/**
+ * persistencia
+ */
+
