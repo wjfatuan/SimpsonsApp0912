@@ -12,7 +12,7 @@ import com.example.simpsonsapp0912.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    val simpsonsCharacters = arrayListOf("Marge", "Lisa", "Homer")
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,21 +25,7 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        val myAdapter = CharacterListAdapter(this, simpsonsCharacters)
-        binding.charactersList.adapter = myAdapter
 
-        binding.charactersList.setOnItemClickListener { listView, view, index, vid ->
-            Log.d("LISTMSG","listview: $listView ")
-            Log.d("LISTMSG","view: $view ")
-            Log.d("LISTMSG","index: $index ")
-            Log.d("LISTMSG","vid: $vid ")
-            val goToIntent = Intent(this, CharacterActivity::class.java)
-            goToIntent.putExtra("CHARACTERINDEX", index)
-            goToIntent.putExtra("CHARACTERNAME", simpsonsCharacters[index])
-            simpsonsCharacters.add("Maggie")
-            myAdapter.notifyDataSetChanged()
-            startActivity(goToIntent)
-        }
         Log.d("LIFECYCLE", "onCreate")
     }
 
