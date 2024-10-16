@@ -1,46 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:id="@+id/main"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-tools:context=".CharacterDetailFragment">
+<layout>
+    <data>
+        <variable
+            name="model"
+            type="com.example.simpsonsapp0912.model.CharacterDetailViewModel" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.CharacterDetailFragment">
 
-<TextView
-    android:id="@+id/characterName"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Bart"
-    android:textSize="34sp"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/characterName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@{model.name.toString()}"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-<ImageView
-    android:id="@+id/characterImage"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    android:src="@drawable/bart"
-    app:layout_constraintTop_toBottomOf="@id/characterName"/>
+    <ImageView
+        android:id="@+id/characterImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:src="@drawable/bart"
+        app:layout_constraintTop_toBottomOf="@id/characterName"/>
 
-<Button
-    android:id="@+id/btnDoSomething"
-    android:text="Wikipedia"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/characterImage" />
+    <Button
+        android:id="@+id/btnDoSomething"
+        android:text="Wikipedia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/characterImage" />
 
-<TextView
-    android:id="@+id/characterDescription"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Lorem Ipsum Dolor"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/btnDoSomething" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/characterDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@{model.description.toString()}"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnDoSomething" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

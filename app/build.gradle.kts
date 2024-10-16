@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.ksp)
 }
 
 android {
@@ -9,6 +10,7 @@ android {
 
     buildFeatures {
         viewBinding = true
+        dataBinding = true
     }
 
     defaultConfig {
@@ -40,6 +42,13 @@ android {
 }
 
 dependencies {
+    val room_version = "2.5.1"
+
+    implementation("androidx.room:room-runtime:$room_version")
+    annotationProcessor("androidx.room:room-compiler:$room_version")
+
+    // To use Kotlin annotation processing tool (kapt)
+    ksp("androidx.room:room-compiler:$room_version")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -52,6 +61,7 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    implementation("com.squareup.picasso:picasso:2.8")
 
     implementation(libs.androidx.activity)
 }

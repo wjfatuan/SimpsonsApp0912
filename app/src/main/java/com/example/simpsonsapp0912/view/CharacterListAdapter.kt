@@ -1,4 +1,4 @@
-package com.example.simpsonsapp0912
+package com.example.simpsonsapp0912.view
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.TextView
+import com.example.simpsonsapp0912.R
 
 class CharacterListAdapter(val ctx: Context, val data: ArrayList<String>) :
     ArrayAdapter<String>(ctx, R.layout.list_characters, data) {

@@ -1,4 +1,4 @@
-package com.example.simpsonsapp0912
+package com.example.simpsonsapp0912.view
 
 import android.content.Intent
 import android.net.Uri
@@ -8,13 +8,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import com.example.simpsonsapp0912.databinding.FragmentCharacterDetailBinding
+import com.example.simpsonsapp0912.model.CharacterDetailViewModel
+import com.example.simpsonsapp0912.model.HomeViewModel
 
 class CharacterDetailFragment : Fragment() {
 
     //val args: CharacterDetailFragmentArgs by navArgs()
-    var name: String? = "Bart"
+    var _viewmodel: CharacterDetailViewModel? = null
+    private val viewmodel get() = _viewmodel!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,9 +29,13 @@ class CharacterDetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         Log.d("NAVIGATION","Hi, this is the character detail fragment")
+        // configurar el viewmodel con los datos recibidos
+        _viewmodel = ViewModelProvider(this).get(CharacterDetailViewModel::class.java)
+        viewmodel.name.postValue("Marge")
         val binding = FragmentCharacterDetailBinding.inflate(inflater, container, false)
-        binding.characterName.text = name
-        val id = resources.getIdentifier(name?.lowercase(), "drawable", requireActivity().packageName)
+        binding.model = viewmodel
+
+        val id = resources.getIdentifier(viewmodel.name.getValue()?.lowercase(), "drawable", requireActivity().packageName)
         binding.characterImage.setImageResource(id)
 
         binding.btnDoSomething.setOnClickListener {
@@ -38,7 +46,7 @@ class CharacterDetailFragment : Fragment() {
 
     fun callIntent() {
         val intent = Intent(Intent.ACTION_VIEW).apply {
-            data = Uri.parse("https://es.wikipedia.org/w/index.php?search=$name")
+            data = Uri.parse("https://es.wikipedia.org/w/index.php?search=${viewmodel.name.getValue()}")
         }
         startActivity(intent)
     }
