@@ -51,6 +51,9 @@ dependencies {
     // To use Kotlin annotation processing tool (kapt)
     ksp("androidx.room:room-compiler:$room_version")
 
+    implementation("com.google.auto.value:auto-value-annotations:1.10.1") // Latest AutoValue as of Nov 2023
+    ksp("com.google.auto.value:auto-value:1.10.1")
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
