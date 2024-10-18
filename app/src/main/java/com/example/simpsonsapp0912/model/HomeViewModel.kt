@@ -6,6 +6,10 @@ import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import androidx.room.Room
+import com.example.simpsonsapp0912.database.CharacterDatabase
+import kotlinx.coroutines.launch
 import java.io.File
 import java.io.FileInputStream
 import java.io.FileOutputStream
@@ -37,7 +41,15 @@ class HomeViewModel(app: Application) : AndroidViewModel(app) {
         out.close()
     }
 
-    fun readCharacters() {
+    fun loadCharacters() {
+        viewModelScope.launch {
+            val db = Room.databaseBuilder(
+                getApplication<Application>().applicationContext,
+                CharacterDatabase::class.java, "simpsons.db"
+            ).build()
+            val characters = db.characterDao().getAll()
+            Log.d("DBROOM", "Characters: $characters")
+        }
 
     }
 

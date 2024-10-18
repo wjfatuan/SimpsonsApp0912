@@ -27,6 +27,7 @@ class HomeFragment : Fragment() {
     ): View? {
         Log.d("NAVIGATION","Hi, this is the home fragment")
         _viewmodel = ViewModelProvider(this).get(HomeViewModel::class.java)
+        viewmodel.loadCharacters()
         // Inflate the layout for this fragment
         val binding = FragmentHomeBinding.inflate(inflater,container, false)
         val myAdapter = CharacterListAdapter(requireActivity(), viewmodel.simpsonsCharacters)
