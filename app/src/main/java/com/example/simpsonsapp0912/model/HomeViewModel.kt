@@ -5,17 +5,11 @@ import android.content.Context
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.room.Room
 import com.example.simpsonsapp0912.database.Character
 import com.example.simpsonsapp0912.database.CharacterDatabase
 import kotlinx.coroutines.launch
-import java.io.File
-import java.io.FileInputStream
-import java.io.FileOutputStream
 import java.io.PrintStream
-import java.util.Scanner
 
 class HomeViewModel(app: Application) : AndroidViewModel(app) {
 

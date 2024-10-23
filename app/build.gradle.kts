@@ -42,6 +42,10 @@ android {
 }
 
 dependencies {
+    implementation(libs.androidx.legacy.support.v4)
+    implementation(libs.androidx.fragment.ktx)
+    implementation(libs.ion)
+    implementation(libs.gson)
     val room_version = "2.5.1"
 
     implementation("androidx.room:room-runtime:$room_version")

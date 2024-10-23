@@ -45,6 +45,9 @@ class HomeFragment : Fragment() {
             viewmodel.addCharacter("Maggie")
             myAdapter.notifyDataSetChanged()
         }
+        binding.catsButton.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_catsFragment)
+        }
 
         return binding.root
     }

@@ -23,5 +23,13 @@
         <action
             android:id="@+id/action_homeFragment_to_characterDetailFragment"
             app:destination="@id/characterDetailFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_catsFragment"
+            app:destination="@id/catsFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/catsFragment"
+        android:name="com.example.simpsonsapp0912.CatsFragment"
+        android:label="fragment_cats"
+        tools:layout="@layout/fragment_cats" />
 </navigation>
