@@ -46,6 +46,8 @@ dependencies {
     implementation(libs.androidx.fragment.ktx)
     implementation(libs.ion)
     implementation(libs.gson)
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
     val room_version = "2.5.1"
 
     implementation("androidx.room:room-runtime:$room_version")

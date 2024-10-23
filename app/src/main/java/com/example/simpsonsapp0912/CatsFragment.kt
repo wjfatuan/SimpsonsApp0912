@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import com.example.simpsonsapp0912.databinding.FragmentCatsBinding
 import com.example.simpsonsapp0912.model.CatsViewModel
 import com.example.simpsonsapp0912.services.Cat
+import com.example.simpsonsapp0912.services.CatsApi
 import com.google.gson.Gson
 import com.google.gson.JsonArray
 import com.koushikdutta.async.future.FutureCallback
@@ -37,29 +38,18 @@ class CatsFragment : Fragment() {
             .into(binding.catImage)
     }
 
-    fun loadCats() {
-        // cal the api using Ion
-        Ion.with(requireContext())
-            .load("https://api.thecatapi.com/v1/images/search")
-            .asString()
-            .setCallback(object: FutureCallback<String> {
-                override fun onCompleted(e: Exception?, result: String?) {
-                    if(result!=null) {
-                        val gson = Gson()
-                        val cats = gson.fromJson(result, Array<Cat>::class.java)
-                        showCat(cats[0])
-                    }
-                }
-            })
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentCatsBinding.inflate(layoutInflater)
-        // cal the api using Ion
-        loadCats()
+        viewModel.loadCats()
+        viewModel.cat.observe(viewLifecycleOwner) {
+            showCat(it)
+        }
+        binding.btnRefresh.setOnClickListener {
+            viewModel.loadCats()
+        }
         return binding.root
     }
 }
