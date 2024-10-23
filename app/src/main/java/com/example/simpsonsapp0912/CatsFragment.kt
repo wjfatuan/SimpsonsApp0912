@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.simpsonsapp0912.databinding.FragmentCatsBinding
 import com.example.simpsonsapp0912.model.CatsViewModel
+import com.example.simpsonsapp0912.services.Cat
+import com.google.gson.Gson
 import com.google.gson.JsonArray
 import com.koushikdutta.async.future.FutureCallback
 import com.koushikdutta.ion.Ion
@@ -29,9 +31,9 @@ class CatsFragment : Fragment() {
         super.onCreate(savedInstanceState)
     }
 
-    fun showCat(url: String, width: Int, height: Int) {
+    fun showCat(cat: Cat) {
         Picasso.get()
-            .load(url)
+            .load(cat.url)
             .into(binding.catImage)
     }
 
@@ -39,15 +41,13 @@ class CatsFragment : Fragment() {
         // cal the api using Ion
         Ion.with(requireContext())
             .load("https://api.thecatapi.com/v1/images/search")
-            .asJsonArray()
-            .setCallback(object: FutureCallback<JsonArray> {
-                override fun onCompleted(e: Exception?, result: JsonArray?) {
+            .asString()
+            .setCallback(object: FutureCallback<String> {
+                override fun onCompleted(e: Exception?, result: String?) {
                     if(result!=null) {
-                        val cat = result.get(0).asJsonObject
-                        val url = cat.get("url").asString
-                        val width = cat.get("width").asInt
-                        val height = cat.get("height").asInt
-                        showCat(url, width, height)
+                        val gson = Gson()
+                        val cats = gson.fromJson(result, Array<Cat>::class.java)
+                        showCat(cats[0])
                     }
                 }
             })
