@@ -1,5 +1,6 @@
 package com.example.simpsonsapp0912.model
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -15,7 +16,8 @@ class CatsViewModel : ViewModel() {
         // cal the api using Retrofit
         viewModelScope.launch {
             val catsApi = CatsApi.getInstance()
-            val cats = catsApi.search()
+            val cats = catsApi.search(5)
+            Log.d("CATS", cats.toString())
             cat.postValue(cats[0])
         }
     }
